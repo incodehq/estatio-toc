@@ -22,10 +22,11 @@
 
     <div class="container">
         <div class="row">
-            <div class="col col-lg-12">
+            <div class="col col-lg-12 text-center">
                 <h1>Estatio webapps</h1>
             </div>
         </div>
+        <br/>
         <div class="row">
             <div class="col col-sm-3">
                 <div class="card" style="width: 95%; ">
@@ -34,7 +35,7 @@
                         <p class="card-text" style="height: 4rem;">
                             Invoicing & lease management (end-user UI)
                         </p>
-                        <a th:href="@{${estatioHref}}" class="btn btn-primary">Open</a>
+                        <a target="_blank" th:href="@{${estatioHref}}" class="btn btn-primary">Open</a>
                     </div>
                 </div>
             </div>
@@ -45,7 +46,7 @@
                         <p class="card-text" style="height: 4rem;">
                             Invoicing & lease management (dev API)
                         </p>
-                        <a th:href="@{${swaggerHref}}" class="btn btn-primary">Open</a>
+                        <a target="_blank" th:href="@{${swaggerHref}}" class="btn btn-primary">Open</a>
                     </div>
                 </div>
             </div>
@@ -56,7 +57,7 @@
                         <p class="card-text" style="height: 4rem;">
                             Invoicing & lease management (machine API)
                         </p>
-                        <a th:href="@{${restfulHref}}" class="btn btn-primary">Open</a>
+                        <a target="_blank" th:href="@{${restfulHref}}" class="btn btn-primary">Open</a>
                     </div>
                 </div>
             </div>
@@ -67,7 +68,7 @@
                         <p class="card-text" style="height: 4rem;">
                             Remote configuration & management
                         </p>
-                        <a th:href="@{${hawtioHref}}" class="btn btn-primary">Open</a>
+                        <a target="_blank" th:href="@{${hawtioHref}}" class="btn btn-primary">Open</a>
                         <p class="card-text">
                         <dl>
                             <dt>messagerelay</dt>
@@ -93,7 +94,7 @@
                         <p class="card-text" style="height: 4rem;">
                             Guaranteed delivery of messages between Estatio and CODA
                         </p>
-                        <a th:href="@{${messagebrokerHref}}" class="btn btn-primary">Open</a>
+                        <a target="_blank" th:href="@{${messagebrokerHref}}" class="btn btn-primary">Open</a>
                     </div>
                 </div>
             </div>
@@ -104,9 +105,11 @@
                         <p class="card-text"  style="height: 4rem;">
                             This 'table of contents'
                         </p>
-                        <a th:href="@{${tocHref}}" class="btn btn-primary">Open</a>
+                        <a target="_blank" th:href="@{${tocHref}}" class="btn btn-primary">Open</a>
                     </div>
                 </div>
+            </div>
+            <div class="col col-sm-3">
             </div>
             <div class="col col-sm-3">
                 <div class="card" style="width: 95%; ">
@@ -117,7 +120,7 @@
                             <br/>
                             <i>(not yet deployed)</i>
                         </p>
-                        <a th:href="@{${zipkinHref}}" class="btn btn-primary disabled">Open</a>
+                        <a target="_blank" th:href="@{${zipkinHref}}" class="btn btn-primary disabled">Open</a>
                     </div>
                 </div>
             </div>
