@@ -19,29 +19,35 @@ public class IndexController {
     @GetMapping("/")
     public String index(Model model) {
 
-        final String hostname = hostname();
-
-        model.addAttribute("estatioHref", "https://" + hostname + "/wicket");
-        model.addAttribute("swaggerHref", "https://" + hostname + "/swagger-ui/");
-        model.addAttribute("restfulHref", "https://" + hostname + "/restful/");
-        model.addAttribute("hawtioHref", "https://hawtio." + hostname );
-        model.addAttribute("messagebrokerHref", "https://messagebroker." + hostname );
-        model.addAttribute("zipkinHref", "https://zipkin." + hostname + "/zipkin");
-        model.addAttribute("tocHref", "https://toc." + hostname );
+        model.addAttribute("estatioHref", "https://" + hostname("") + "/wicket");
+        model.addAttribute("swaggerHref", "https://" + hostname("") + "/swagger-ui/");
+        model.addAttribute("restfulHref", "https://" + hostname("") + "/restful/");
+        model.addAttribute("hawtioHref", "https://hawtio." + hostname("hawtio.") );
+        model.addAttribute("messagebrokerHref", "https://" + hostname("messagebroker.") );
+        model.addAttribute("tocHref", "https://" + hostname("toc.") );
+        model.addAttribute("zipkinHref", "https://" + hostname("zipkin.") + "/zipkin");
 
         return "index";
     }
 
-    private String hostname() {
+    String hostname(String prefix) {
         try {
-            final String hostName = InetAddress.getLocalHost().getHostName();
-            // strip off 'toc.' prefix
+            String hostName = getHostName();
+            // convert "toc.estatio-dev-dha-toc" to <prefix>estatio-dev-dha.int.ecpnv.com
             if(hostName.startsWith("toc.")) {
-                return hostName.substring(4);
+                hostName =  hostName.substring(4);
+            }
+            hostName = prefix + hostName;
+            if(hostName.endsWith("-toc")) {
+                hostName = hostName.substring(0, hostName.length()-4) + ".int.ecpnv.com";
             }
             return hostName;
         } catch (UnknownHostException uhe) {
             return "estatio-test.int.ecpnv.com";
         }
+    }
+
+    String getHostName() throws UnknownHostException {
+        return InetAddress.getLocalHost().getHostName();
     }
 }
