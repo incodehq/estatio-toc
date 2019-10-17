@@ -1,0 +1,174 @@
+= Interaction Subscriber
+:toc:
+
+This microservice is responsible for subscribing to an ActiveMQ message broker and forwarding on any link:https://isis.apache.org/schema/ixn/ixn.xsd[interaction] messages (originally originating from an link:https://isis.apache.org[Apache Isis]) application onto a REST endpoint.
+
+It can be used in conjunction with the link:https://github.com/incodehq/ixn-relay[incodehq/ixn-relay] to publish messages from an Apache Isis application to an integration webapp (eg implemented using https://camel.apache.org[Apache Camel]), but without either the Apache Isis app nor the integration app having knowledge of the other.
+
+[plantuml]
+----
+[ixn-relay] as ir
+[Apache Isis\nApp] as app
+[Integration\nApp] as ia
+[ActiveMQ] as mb
+[ixn-subscriber] as is
+
+app <-d. ir
+is -.r-> ia
+mb .d-> is
+ir -.r-> mb
+----
+
+== Design
+
+The diagram below sketches the design:
+
+[plantuml]
+----
+hide empty members
+
+component ActiveMQ {
+}
+
+component "ixn-subscriber" {
+
+    package relay {
+        interface RelayRest {
+            handle()
+        }
+    }
+
+    package relay-rest {
+
+        class RelayRest implements Relay {
+        }
+    }
+
+    package webapp {
+
+        class SubscribingRoute {
+
+        }
+        class Dispatcher {
+
+        }
+    }
+
+}
+
+component RestEndpoint {
+}
+
+ActiveMQ .r-> SubscribingRoute
+
+SubscribingRoute .d-> Dispatcher
+Dispatcher -> "0..*" Relay
+
+RelayRest .r-> RestEndpoint : http POST
+----
+
+The `SubscribingRoute` is responsible for subscribing to an ActiveMQ (JMS) queue.
+It simply forwards onto the `Dispatcher`.
+
+The `Dispatcher` in turn loops over all available `Relay` implementations
+
+Finally, the `RelayRest` implementation posts the interaction to the specified REST endpoint.
+
+
+== Configuration
+
+This microservice has been implemented using Spring Boot, and so is configured using an `application.yaml` file:
+
+[source.yaml]
+----
+logging:
+  config: classpath:logback.xml
+
+camel:
+  springboot:
+    main-run-controller: true
+
+spring:
+  activemq:
+    broker-url: tcp://localhost:61616
+
+app:
+  queue-name: memberInteractionsQueue
+  relay-cxfrs:
+    base: http://localhost:9090/est2coda/
+    uri-suffix: memberInteractionsQueue
+  relay-rest:
+    base: http://localhost:9090/est2coda/
+    uri-suffix: memberInteractionsQueue
+    username: alex
+    password: pass
+    connection-timeout: 60s
+    receive-timeout: 60s
+
+  tracing:
+    tracing-type: zipkin
+    zipkin:
+      endpoint: http://localhost:9411/api/v2/spans
+      service-name: ixn-subscriber
+      rate: 1.0f
+      include-message-body-streams: true
+----
+
+
+
+== Local Testing
+
+=== Prereqs : Message Broker
+
+This image requires an instance of Apache ActiveMQ to be running.
+The easiest way to do this is using the link:https://cloud.docker.com/u/incodehq/repository/docker/incodehq/activemq-mssqlserver/tags[incodehq/activemq-mssqlserver] Docker image.
+Note, this will default to using an in-memory database, so it has no hard pre-reqs itself.
+
+For example:
+
+[source,bash]
+----
+export TAG=20191011.1912.master.880118bc
+
+docker run -d -p61616:61616 -p8161:8161 incodehq/activemq-mssqlserver:$TAG
+----
+
+Then, log on using: link:http://localhost:8161[]
+
+=== Prereqs : Zipkin
+
+This dependency is optional, and can be disabled by setting the app.tracing.tracing-type configuration property to 'none'.
+
+Otherwise, an instance of zipkin needs to be running at the specified URL specified by the `app.tracing.zipkin.endpoint` configuration property.
+
+The easiest way to satisfy this is to run the `openzipkin/zipkin` image.
+This runs in-memory by default:
+
+[source,bash]
+----
+docker run -d -p 9411:9411 openzipkin/zipkin
+----
+
+
+=== How to run the example
+
+The configuration file above shows Camel configured to connect to a remote broker (`tcp://localhost:61616`).
+
+To run, just use maven:
+
+[source,bash]
+----
+mvn -pl webapp spring-boot:run
+----
+
+
+== Docker
+
+A Docker image of this app is available at https://hub.docker.com/r/incodehq/ixn-subscriber[Docker hub].
+
+To allow configuration to be easily externalized, the image expects a `/run/secrets` directory to exist, and switches to and then runs the application in that directory.
+Spring Boot will then link:https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html#boot-features-external-config-application-property-files[automatically pick up] that configuration and use it.
+
+Typically therefore all that is required is to define an `application.yaml` or `application.properties` file as a secret.
+If the secret filename has a prefix, as may be the case for Docker swarm namespacing, (eg `foo.bar.application.yaml`) then a symbolic link (eg `application.yaml`) will be automatically created to the secret filename.
+

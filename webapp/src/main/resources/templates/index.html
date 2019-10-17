@@ -1,0 +1,131 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Estatio Webapps</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="#">incode.org</a>
+</nav>
+
+<main role="main" class="container">
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col col-lg-12">
+                <h1>Estatio webapps</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-sm-3">
+                <div class="card" style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">Estatio</h5>
+                        <p class="card-text" style="height: 4rem;">
+                            Invoicing & lease management (end-user UI)
+                        </p>
+                        <a th:href="@{${estatioHref}}" class="btn btn-primary">Open</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm-3">
+                <div class="card" style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">Swagger</h5>
+                        <p class="card-text" style="height: 4rem;">
+                            Invoicing & lease management (dev API)
+                        </p>
+                        <a th:href="@{${swaggerHref}}" class="btn btn-primary">Open</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm-3">
+                <div class="card" style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">Restful</h5>
+                        <p class="card-text" style="height: 4rem;">
+                            Invoicing & lease management (machine API)
+                        </p>
+                        <a th:href="@{${restfulHref}}" class="btn btn-primary">Open</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm-3">
+                <div class="card"  style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">hawt.io</h5>
+                        <p class="card-text" style="height: 4rem;">
+                            Remote configuration & management
+                        </p>
+                        <a th:href="@{${hawtioHref}}" class="btn btn-primary">Open</a>
+                        <p class="card-text">
+                        <dl>
+                            <dt>messagerelay</dt>
+                            <dd><code>/actuator/jolokia</code></dd>
+
+                            <dt>messagesubscriber</dt>
+                            <dd><code>/actuator/jolokia</code></dd>
+
+                            <dt>camel</dt>
+                            <dd><code>/jolokia</code></dd>
+                        </dl>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="col col-sm-3">
+                <div class="card" style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">Message Broker</h5>
+                        <p class="card-text" style="height: 4rem;">
+                            Guaranteed delivery of messages between Estatio and CODA
+                        </p>
+                        <a th:href="@{${messagebrokerHref}}" class="btn btn-primary">Open</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm-3">
+                <div class="card"  style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">TOC</h5>
+                        <p class="card-text"  style="height: 4rem;">
+                            This 'table of contents'
+                        </p>
+                        <a th:href="@{${tocHref}}" class="btn btn-primary">Open</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col col-sm-3">
+                <div class="card" style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">Zipkin</h5>
+                        <p class="card-text" style="height: 4rem;">
+                            Distributed Tracing
+                            <br/>
+                            <i>(not yet deployed)</i>
+                        </p>
+                        <a th:href="@{${zipkinHref}}" class="btn btn-primary disabled">Open</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
