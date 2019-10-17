@@ -22,7 +22,7 @@ public class IndexController {
         model.addAttribute("estatioHref", "https://" + hostname("") + "/wicket");
         model.addAttribute("swaggerHref", "https://" + hostname("") + "/swagger-ui/");
         model.addAttribute("restfulHref", "https://" + hostname("") + "/restful/");
-        model.addAttribute("hawtioHref", "https://hawtio." + hostname("hawtio.") );
+        model.addAttribute("hawtioHref", "https://" + hostname("hawtio.") );
         model.addAttribute("messagebrokerHref", "https://" + hostname("messagebroker.") );
         model.addAttribute("tocHref", "https://" + hostname("toc.") );
         model.addAttribute("zipkinHref", "https://" + hostname("zipkin.") + "/zipkin");
