@@ -9,6 +9,7 @@
     <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
     <link rel="stylesheet" th:href="@{/css/main.css}"/>
 
+
 </head>
 
 <body>
@@ -28,162 +29,187 @@
         </div>
         <br/>
         <div class="row">
-            <!-- wicket -->
-            <div class="col col-sm-3">
-                <div class="card" style="width: 95%; ">
-                    <div class="card-body">
-                        <h5 class="card-title">Estatio</h5>
-                        <p class="card-text" style="height: 4rem;">
-                            Invoicing & lease management (end-user UI)
-                        </p>
-                        <a target="_blank" th:href="@{${estatioHref}}" class="btn btn-primary">Open</a>
+            <div class="col col-sm-9">
+                <div class="row">
+                    <div class="col col-sm-4">
+                        <!-- wicket -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Estatio</h5>
+                                <p class="card-text">
+                                    Invoicing & lease management (end-user UI)
+                                </p>
+                                <a target="_blank" th:href="@{${estatioHref}}" class="btn btn-primary">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-4">
+                        <!-- activemq -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Message Broker</h5>
+                                <p class="card-text">
+                                    Guaranteed delivery of messages between Estatio and CODA
+                                </p>
+                                <a target="_blank" th:href="@{${messagebrokerHref}}" class="btn btn-primary">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-4">
+                        <!-- Docker Mgmt -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Docker Management</h5>
+                                <p class="card-text">
+                                    Portainer
+                                    <br/>
+                                </p>
+                                <a target="_blank" href="https://portainer.ecpnv.com/#/services" class="btn btn-primary">Open</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col col-sm-4">
+                        <!-- swagger -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Swagger</h5>
+                                <p class="card-text">
+                                    Invoicing & lease management (dev API)
+                                </p>
+                                <a target="_blank" th:href="@{${swaggerHref}}" class="btn btn-primary">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-4">
+                    </div>
+                    <div class="col col-sm-4">
+                        <!-- CI -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Continuous Integ'n</h5>
+                                <p class="card-text">
+                                    Jenkin CI
+                                    <br/>
+                                    <i>Hosted on-prem</i>
+                                </p>
+                                <a target="_blank" href="https://jenkins.ecpnv.com/job/estatio/" class="btn btn-primary">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-sm-4">
+                        <!-- restful -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Restful</h5>
+                                <p class="card-text">
+                                    Invoicing & lease management (REST API)
+                                </p>
+                                <a target="_blank" th:href="@{${restfulHref}}" class="btn btn-primary">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-4">
+                        <!-- TOC -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">TOC</h5>
+                                <p class="card-text">
+                                    This 'table of contents'
+                                </p>
+                                <a target="_blank" th:href="@{${tocHref}}" class="btn btn-primary">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col col-sm-4">
+                        <!-- docs -->
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Docs</h5>
+                                <p class="card-text">
+                                    Asciidoc/Antora documentation
+                                    <br/>
+                                    <i>Published in GAE</i>
+                                </p>
+                                <a target="_blank" href="https://docs.ecp.incode.work/repos/published-sites.html" class="btn btn-primary">Open</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <!-- hawtio -->
             <div class="col col-sm-3">
                 <div class="card"  style="width: 95%; ">
-                    <div class="card-body">
+                    <dd class="card-body">
                         <h5 class="card-title">hawt.io</h5>
-                        <p class="card-text" style="height: 4rem;">
+                        <p class="card-text">
                             Remote configuration & management
                         </p>
                         <a target="_blank" th:href="@{${hawtioHref}}" class="btn btn-primary">Open</a>
-                        <p class="card-text">
-                        <dl>
-                            <dt>messagerelay</dt>
-                            <dd><code>/actuator/jolokia</code></dd>
+                        <p>
+                            <dl>
+                                <dt>messagerelay</dt>
+                                <dd>
+                                    <p>
+                                        scheme: <code>http</code>
+                                        <br/>
+                                        host: <code>messagerelay</code>
+                                        <br/>
+                                        port: <code>8080</code>
+                                        <br/>
+                                        path: <code>/actuator/jolokia</code>
+                                    </p>
+                                </dd>
 
-                            <dt>messagesubscriber</dt>
-                            <dd><code>/actuator/jolokia</code></dd>
-
-                            <dt>camel</dt>
-                            <dd><code>/jolokia</code></dd>
-                        </dl>
+                                <dt>messagesubscriber</dt>
+                                <dd>
+                                    <p>
+                                        scheme: <code>http</code>
+                                        <br/>
+                                        host: <code>messagesubscriber</code>
+                                        <br/>
+                                        port: <code>8080</code>
+                                        <br/>
+                                        path: <code>/actuator/jolokia</code>
+                                    </p>
+                                </dd>
+                                <dt>camel</dt>
+                                <dd>
+                                    <p>
+                                        scheme: <code>http</code>
+                                        <br/>
+                                        host: <code>camel</code>
+                                        <br/>
+                                        port: <code>8080</code>
+                                        <br/>
+                                        path: <code>/api/jolokia</code>
+                                    </p>
+                                </dd>
+                            </dl>
                         </p>
-                    </div>
-                </div>
-            </div>
-            <!-- activemq -->
-            <div class="col col-sm-3">
-                <div class="card" style="width: 95%; ">
-                    <div class="card-body">
-                        <h5 class="card-title">Message Broker</h5>
-                        <p class="card-text" style="height: 4rem;">
-                            Guaranteed delivery of messages between Estatio and CODA
-                        </p>
-                        <a target="_blank" th:href="@{${messagebrokerHref}}" class="btn btn-primary">Open</a>
-                    </div>
-                </div>
-            </div>
-            <!-- Docker Mgmt -->
-            <div class="col col-sm-3">
-                <div class="card" style="width: 95%; ">
-                    <div class="card-body">
-                        <h5 class="card-title">Docker Management</h5>
-                        <p class="card-text" style="height: 4rem;">
-                            Portainer
-                            <br/>
-                        </p>
-                        <a target="_blank" href="https://portainer.ecpnv.com/#/services" class="btn btn-primary">Open</a>
                     </div>
                 </div>
             </div>
         </div>
-        <br/>
-        <div class="row">
-            <!-- swagger -->
-            <div class="col col-sm-3">
-                <div class="card" style="width: 95%; ">
-                    <div class="card-body">
-                        <h5 class="card-title">Swagger</h5>
-                        <p class="card-text" style="height: 4rem;">
-                            Invoicing & lease management (dev API)
-                        </p>
-                        <a target="_blank" th:href="@{${swaggerHref}}" class="btn btn-primary">Open</a>
+        <!--
+                    <div class="col col-sm-3">
+                        <div class="card" style="width: 95%; ">
+                            <div class="card-body">
+                                <h5 class="card-title">Zipkin</h5>
+                                <p class="card-text" style="height: 4rem;">
+                                    Distributed Tracing
+                                    <br/>
+                                    <i>(not yet deployed)</i>
+                                </p>
+                                <a target="_blank" th:href="@{${zipkinHref}}" class="btn btn-primary disabled">Open</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <!-- (empty) -->
-            <div class="col col-sm-3">
-            </div>
-            <!-- (empty) -->
-            <div class="col col-sm-3">
-            </div>
-            <!-- CI -->
-            <div class="col col-sm-3">
-                <div class="card" style="width: 95%; ">
-                    <div class="card-body">
-                        <h5 class="card-title">Continuous Integration</h5>
-                        <p class="card-text" style="height: 4rem;">
-                            Jenkin CI
-                            <br/>
-                            <i>Hosted on-prem</i>
-                        </p>
-                        <a target="_blank" href="https://jenkins.ecpnv.com/job/estatio/" class="btn btn-primary">Open</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <br/>
-        <div class="row">
-            <!-- restful -->
-            <div class="col col-sm-3">
-                <div class="card" style="width: 95%; ">
-                    <div class="card-body">
-                        <h5 class="card-title">Restful</h5>
-                        <p class="card-text" style="height: 4rem;">
-                            Invoicing & lease management (REST API)
-                        </p>
-                        <a target="_blank" th:href="@{${restfulHref}}" class="btn btn-primary">Open</a>
-                    </div>
-                </div>
-            </div>
-<!--
-            <div class="col col-sm-3">
-                <div class="card" style="width: 95%; ">
-                    <div class="card-body">
-                        <h5 class="card-title">Zipkin</h5>
-                        <p class="card-text" style="height: 4rem;">
-                            Distributed Tracing
-                            <br/>
-                            <i>(not yet deployed)</i>
-                        </p>
-                        <a target="_blank" th:href="@{${zipkinHref}}" class="btn btn-primary disabled">Open</a>
-                    </div>
-                </div>
-            </div>
--->
-            <!-- (empty) -->
-            <div class="col col-sm-3">
-            </div>
-            <!-- TOC -->
-            <div class="col col-sm-3">
-                <div class="card"  style="width: 95%; ">
-                    <div class="card-body">
-                        <h5 class="card-title">TOC</h5>
-                        <p class="card-text"  style="height: 4rem;">
-                            This 'table of contents'
-                        </p>
-                        <a target="_blank" th:href="@{${tocHref}}" class="btn btn-primary">Open</a>
-                    </div>
-                </div>
-            </div>
-            <!-- docs -->
-            <div class="col col-sm-3">
-                <div class="card"  style="width: 95%; ">
-                    <div class="card-body">
-                        <h5 class="card-title">Docs</h5>
-                        <p class="card-text"  style="height: 4rem;">
-                            Asciidoc/Antora documentation
-                            <br/>
-                            <i>Published in GAE</i>
-                        </p>
-                        <a target="_blank" href="https://docs.ecp.incode.work/repos/published-sites.html" class="btn btn-primary">Open</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        -->
     </div>
 
 </main>

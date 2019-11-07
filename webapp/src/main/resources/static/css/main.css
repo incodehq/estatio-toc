@@ -6,3 +6,13 @@ body {
     text-align: center;
 }
 
+.card {
+    width: 95%;
+    margin-bottom: 1rem;
+
+}
+
+.card .card-text {
+    height: 4rem;
+}
+
