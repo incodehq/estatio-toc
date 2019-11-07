@@ -28,6 +28,7 @@
         </div>
         <br/>
         <div class="row">
+            <!-- wicket -->
             <div class="col col-sm-3">
                 <div class="card" style="width: 95%; ">
                     <div class="card-body">
@@ -39,28 +40,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col col-sm-3">
-                <div class="card" style="width: 95%; ">
-                    <div class="card-body">
-                        <h5 class="card-title">Swagger</h5>
-                        <p class="card-text" style="height: 4rem;">
-                            Invoicing & lease management (dev API)
-                        </p>
-                        <a target="_blank" th:href="@{${swaggerHref}}" class="btn btn-primary">Open</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col col-sm-3">
-                <div class="card" style="width: 95%; ">
-                    <div class="card-body">
-                        <h5 class="card-title">Restful</h5>
-                        <p class="card-text" style="height: 4rem;">
-                            Invoicing & lease management (machine API)
-                        </p>
-                        <a target="_blank" th:href="@{${restfulHref}}" class="btn btn-primary">Open</a>
-                    </div>
-                </div>
-            </div>
+            <!-- hawtio -->
             <div class="col col-sm-3">
                 <div class="card"  style="width: 95%; ">
                     <div class="card-body">
@@ -84,9 +64,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <br/>
-        <div class="row">
+            <!-- activemq -->
             <div class="col col-sm-3">
                 <div class="card" style="width: 95%; ">
                     <div class="card-body">
@@ -98,6 +76,88 @@
                     </div>
                 </div>
             </div>
+            <!-- Docker Mgmt -->
+            <div class="col col-sm-3">
+                <div class="card" style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">Docker Management</h5>
+                        <p class="card-text" style="height: 4rem;">
+                            Portainer
+                            <br/>
+                        </p>
+                        <a target="_blank" href="https://portainer.ecpnv.com/#/services" class="btn btn-primary">Open</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <!-- swagger -->
+            <div class="col col-sm-3">
+                <div class="card" style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">Swagger</h5>
+                        <p class="card-text" style="height: 4rem;">
+                            Invoicing & lease management (dev API)
+                        </p>
+                        <a target="_blank" th:href="@{${swaggerHref}}" class="btn btn-primary">Open</a>
+                    </div>
+                </div>
+            </div>
+            <!-- (empty) -->
+            <div class="col col-sm-3">
+            </div>
+            <!-- (empty) -->
+            <div class="col col-sm-3">
+            </div>
+            <!-- CI -->
+            <div class="col col-sm-3">
+                <div class="card" style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">Continuous Integration</h5>
+                        <p class="card-text" style="height: 4rem;">
+                            Jenkin CI
+                            <br/>
+                            <i>Hosted on-prem</i>
+                        </p>
+                        <a target="_blank" href="https://jenkins.ecpnv.com/job/estatio/" class="btn btn-primary">Open</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <!-- restful -->
+            <div class="col col-sm-3">
+                <div class="card" style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">Restful</h5>
+                        <p class="card-text" style="height: 4rem;">
+                            Invoicing & lease management (REST API)
+                        </p>
+                        <a target="_blank" th:href="@{${restfulHref}}" class="btn btn-primary">Open</a>
+                    </div>
+                </div>
+            </div>
+<!--
+            <div class="col col-sm-3">
+                <div class="card" style="width: 95%; ">
+                    <div class="card-body">
+                        <h5 class="card-title">Zipkin</h5>
+                        <p class="card-text" style="height: 4rem;">
+                            Distributed Tracing
+                            <br/>
+                            <i>(not yet deployed)</i>
+                        </p>
+                        <a target="_blank" th:href="@{${zipkinHref}}" class="btn btn-primary disabled">Open</a>
+                    </div>
+                </div>
+            </div>
+-->
+            <!-- (empty) -->
+            <div class="col col-sm-3">
+            </div>
+            <!-- TOC -->
             <div class="col col-sm-3">
                 <div class="card"  style="width: 95%; ">
                     <div class="card-body">
@@ -109,18 +169,17 @@
                     </div>
                 </div>
             </div>
+            <!-- docs -->
             <div class="col col-sm-3">
-            </div>
-            <div class="col col-sm-3">
-                <div class="card" style="width: 95%; ">
+                <div class="card"  style="width: 95%; ">
                     <div class="card-body">
-                        <h5 class="card-title">Zipkin</h5>
-                        <p class="card-text" style="height: 4rem;">
-                            Distributed Tracing
+                        <h5 class="card-title">Docs</h5>
+                        <p class="card-text"  style="height: 4rem;">
+                            Asciidoc/Antora documentation
                             <br/>
-                            <i>(not yet deployed)</i>
+                            <i>Published in GAE</i>
                         </p>
-                        <a target="_blank" th:href="@{${zipkinHref}}" class="btn btn-primary disabled">Open</a>
+                        <a target="_blank" href="https://docs.ecp.incode.work/repos/published-sites.html" class="btn btn-primary">Open</a>
                     </div>
                 </div>
             </div>

@@ -25,7 +25,6 @@ public class IndexController {
         model.addAttribute("hawtioHref", "https://" + hostname("hawtio.") );
         model.addAttribute("messagebrokerHref", "https://" + hostname("messagebroker.") );
         model.addAttribute("tocHref", "https://" + hostname("toc.") );
-        model.addAttribute("zipkinHref", "https://" + hostname("zipkin.") + "/zipkin");
 
         return "index";
     }
