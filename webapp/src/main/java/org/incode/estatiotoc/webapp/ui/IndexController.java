@@ -32,14 +32,30 @@ public class IndexController {
     String hostname(String prefix) {
         try {
             String hostName = getHostName();
-            // convert "toc.estatio-dev-dha-toc" to <prefix>estatio-dev-dha.int.ecpnv.com
+            // convert "toc.estatio-dev-dha-toc" to "estatio-dev-dha.int.ecpnv.com"
+            // convert "toc.estatio-prod" to "estatio.int.ecpnv.com"
+
+            // strip off "toc." prefix, if any (think this is probably redundant)
             if(hostName.startsWith("toc.")) {
                 hostName =  hostName.substring(4);
             }
-            hostName = prefix + hostName;
+
+            // strip off "-toc" suffix
             if(hostName.endsWith("-toc")) {
-                hostName = hostName.substring(0, hostName.length()-4) + ".int.ecpnv.com";
+                hostName = hostName.substring(0, hostName.length()-4);
             }
+
+            // strip off "-prod" suffix ... this is special case handling for
+            // "estatio-prod", this goes to "estatio"
+            if(hostName.endsWith("-prod")) {
+                hostName = hostName.substring(0, hostName.length()-5);
+            }
+
+            // append the standard suffix
+            if(!hostName.endsWith(".int.ecpnv.com")) {
+                hostName = hostName + ".int.ecpnv.com";
+            }
+            hostName = prefix + hostName;
             return hostName;
         } catch (UnknownHostException uhe) {
             return "estatio-test.int.ecpnv.com";
